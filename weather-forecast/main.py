@@ -28,6 +28,12 @@ try:
             images = {"Clear":"images/clear.png", "Clouds":"images/cloud.png",
                     "Rain":"images/rain.png", "Snow":"images/snow.png"}
             image_paths = [images[condition] for condition in sky_conditions]
-            st.image(image_paths, width=115)
+            dates = [dict["dt_txt"] for dict in filtered_content]
+            for image_path, date in zip(image_paths, dates):
+                col1, col2 = st.columns(2)
+                with col1:
+                    st.image(image_path, width=115)
+                with col2:
+                    st.text(date)
 except KeyError:
     st.warning("That city does not exist, try again!", icon="⚠️")

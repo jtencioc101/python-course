@@ -1,6 +1,7 @@
 import requests
+import os
 
-API_KEY = "6a0eed208286889a650b638da2b28597"
+API_KEY = os.getenv("WEATHER_API_KEY")
 def get_data(place, forecast_days=None, kind=None):
     url = f"http://api.openweathermap.org/data/2.5/forecast?q={place}&appid={API_KEY}"
     response = requests.get(url)

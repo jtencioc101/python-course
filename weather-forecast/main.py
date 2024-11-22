@@ -18,7 +18,7 @@ try:
 
         # Create a tempearture plot
         if option == "Temperature":
-            temperatures = [dict["main"]["temp"] /10 for dict in filtered_content]
+            temperatures = [dict["main"]["temp"] - 273.15 for dict in filtered_content]
             dates = [dict["dt_txt"] for dict in filtered_content]
             figure = px.line(x=dates, y=temperatures, labels={"x": "Date",\
                                             "y":"Temperature (C)"})
